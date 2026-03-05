@@ -49,8 +49,9 @@ public class SecurityConfiguration {
 		http.authorizeHttpRequests(
 			authorize -> authorize
 			.requestMatchers("/member/**").hasAnyRole("USER", "ADMIN")
-			//.requestMatchers("/manager/**").hasRole("MANAGER")
-			.requestMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
+			.requestMatchers("/manager/**").hasRole("MANAGER")
+			/*'manager'도 전부 로그인 가능하게 하려면 .hasRole -> .hasAnyRole
+			.requestMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")*/
 			.requestMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().permitAll()
 		)
